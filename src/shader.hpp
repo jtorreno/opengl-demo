@@ -21,7 +21,7 @@ namespace ogld {
     public:
         shader(std::string const& source) : handle(0) {
             handle = glCreateShader(static_cast<GLenum>(S));
-            
+
             const char* source_c_str = source.c_str();
             glShaderSource(handle, 1, &source_c_str, nullptr);
 
@@ -37,7 +37,7 @@ namespace ogld {
                 std::string info_log;
                 info_log.reserve(info_log_length);
 
-                glGetShaderInfoLog(handle, info_log_length, &info_log_length, info_log.data());
+                glGetShaderInfoLog(handle, info_log_length, &info_log_length, &info_log[0]);
                 throw std::runtime_error(std::string("shader compilation failed.\n\tglGetShaderInfoLog(): ") + info_log);
             }
         }
