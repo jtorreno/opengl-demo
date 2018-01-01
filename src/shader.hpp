@@ -28,7 +28,7 @@ namespace ogld {
             glCompileShader(handle);
 
             GLint compile_status = GL_FALSE;
-            glGetShaderiv(handle, GL_COMPILE_STATUS, &compile_status)
+            glGetShaderiv(handle, GL_COMPILE_STATUS, &compile_status);
 
             if (compile_status == GL_FALSE) {
                 GLint info_log_length = 0;
@@ -37,7 +37,7 @@ namespace ogld {
                 std::string info_log;
                 info_log.reserve(info_log_length);
 
-                glGetShaderInfoLog(handle, info_log_length, &info_log_length, info_log.c_str());
+                glGetShaderInfoLog(handle, info_log_length, &info_log_length, info_log.data());
                 throw std::runtime_error(std::string("shader compilation failed.\n\tglGetShaderInfoLog(): ") + info_log);
             }
         }
@@ -48,5 +48,5 @@ namespace ogld {
         operator GLuint() const noexcept { return handle; }
     private:
         GLuint handle;
-    }
+    };
 }
