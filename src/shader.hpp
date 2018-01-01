@@ -38,7 +38,7 @@ namespace ogld {
                 info_log.reserve(info_log_length);
 
                 glGetShaderInfoLog(handle, info_log_length, &info_log_length, info_log.c_str());
-                throw std::runtime_error(std::string("shader compilation failed.\n\tglGetShaderInfoLog(): ") + std::string());
+                throw std::runtime_error(std::string("shader compilation failed.\n\tglGetShaderInfoLog(): ") + info_log);
             }
         }
 
