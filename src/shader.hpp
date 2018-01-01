@@ -27,10 +27,10 @@ namespace ogld {
 
             glCompileShader(handle);
 
-            GLint compile_status = 0;
+            GLint compile_status = GL_FALSE;
             glGetShaderiv(handle, GL_COMPILE_STATUS, &compile_status)
 
-            if (!compile_status) {
+            if (compile_status == GL_FALSE) {
                 GLint info_log_length = 0;
                 glGetShaderiv(handle, GL_INFO_LOG_LENGTH, &info_log_length);
 
