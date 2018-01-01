@@ -1,5 +1,9 @@
-#include <iostream>
+#include "window.hpp"
 
 auto main() -> int {
-    std::cout << "cheers" << std::endl;
+    ogld::window window("opengl-demo", 640_px * 480_px);
+
+    while (true) {
+        window.refresh();
+    }
 }
