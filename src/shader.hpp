@@ -6,6 +6,8 @@
 #include <string>
 #include <utility>
 
+#include <tdpi/tdpi.h>
+
 #include "window.hpp"
 
 namespace ogld {
@@ -40,7 +42,7 @@ namespace ogld {
             }
         }
 
-        shader(shader<S>&& other) noexcept : shader_handle(other.shader_handle) { other.shader_handle = 0; }
+        shader(shader<S>&& other) noexcept : handle(other._handle) { other.handle = 0; }
         ~shader() { glDeleteShader(handle); }
 
         operator GLuint() const noexcept { return handle; }
