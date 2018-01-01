@@ -3,14 +3,10 @@
 #include <string>
 #include <stdexcept>
 
-#include <glbinding/gl/gl.h>
-#include <glbinding/Binding.h>
-
+#include <tdpi/tdpi.h>
 #include <GLFW/glfw3.h>
 
 #include "window.hpp"
-
-using namespace gl;
 
 ogld::px::px(unsigned int x_) noexcept : x(x_) {}
 
@@ -34,6 +30,8 @@ ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw
     if (!glfw_window.get()) throw std::runtime_error("failed to create window.");
 
     glfwMakeContextCurrent(glfw_window.get());
+
+    if (!tdpiLoadGL()) throw std::runtime_error("failed to load OpenGL.");
 }
 
 void ogld::window::make_current() noexcept { glfwMakeContextCurrent(glfw_window.get()); }

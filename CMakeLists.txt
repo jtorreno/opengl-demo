@@ -23,6 +23,5 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/glfw)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/glfw/include)
 target_link_libraries(opengl-demo glfw ${GLFW_LIBRARIES})
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/glbinding)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/glbinding/include)
-target_link_libraries(opengl-demo glbinding)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/tdpi)
+target_link_libraries(tppi tdpi)

@@ -6,9 +6,7 @@
 #include <string>
 #include <utility>
 
-#include <glbinding/gl/gl.h>
-
-using namespace gl;
+#include "window.hpp"
 
 namespace ogld {
     enum class shader_type : GLenum {

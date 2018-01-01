@@ -1,6 +1,6 @@
 [submodule "deps/glfw"]
 	path = deps/glfw
 	url = https://github.com/glfw/glfw
-[submodule "deps/glbinding"]
-	path = deps/glbinding
-	url = https://github.com/cginternals/glbinding
+[submodule "deps/tdpi"]
+	path = deps/tdpi
+	url = https://github.com/skorezore/tdpi
