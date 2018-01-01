@@ -7,3 +7,6 @@
 [submodule "deps/tinyobjloader"]
 	path = deps/tinyobjloader
 	url = https://github.com/syoyo/tinyobjloader
+[submodule "deps/glm"]
+	path = deps/glm
+	url = https://github.com/g-truc/glm
