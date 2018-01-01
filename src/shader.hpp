@@ -42,7 +42,7 @@ namespace ogld {
             }
         }
 
-        shader(shader<S>&& other) noexcept : handle(other._handle) { other.handle = 0; }
+        shader(shader<S>&& other) noexcept : handle(other.handle) { other.handle = 0; }
         ~shader() { glDeleteShader(handle); }
 
         operator GLuint() const noexcept { return handle; }
