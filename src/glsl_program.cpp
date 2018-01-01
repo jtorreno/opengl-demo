@@ -8,7 +8,7 @@
 #include "shader.hpp"
 #include "glsl_program.hpp"
 
-ogld::glsl_program::glsl_program(std::tuple<shader<shader_type::vertex>, shader<shader_type::fragment>> const& shaders, std::vector<std::string> const& attributes) : handle(0) {
+ogld::glsl_program::glsl_program(std::tuple<shader<shader_type::vertex> const&, shader<shader_type::fragment> const&> const& shaders, std::vector<std::string> const& attributes) : handle(0) {
     glAttachShader(handle, std::get<0>(shaders));
     glAttachShader(handle, std::get<1>(shaders));
 

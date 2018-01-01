@@ -11,7 +11,7 @@
 namespace ogld {
     class glsl_program {
     public:
-        glsl_program(std::tuple<shader<shader_type::vertex>, shader<shader_type::fragment>> const& shaders, std::vector<std::string> const& attributes);
+        glsl_program(std::tuple<shader<shader_type::vertex> const&, shader<shader_type::fragment> const&> const& shaders, std::vector<std::string> const& attributes);
         glsl_program(glsl_program&& other) noexcept;
 
         ~glsl_program();
