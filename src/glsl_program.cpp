@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <string>
 #include <tuple>
+#include <utility>
 #include <vector>
 
 #include <tdpi/tdpi.h>
@@ -8,7 +9,7 @@
 #include "shader.hpp"
 #include "glsl_program.hpp"
 
-ogld::glsl_program::glsl_program(std::tuple<shader<shader_type::vertex> const&, shader<shader_type::fragment> const&> const& shaders, std::vector<std::string> const& attributes) : handle(0) {
+ogld::glsl_program::glsl_program(std::tuple<shader<shader_type::vertex>, shader<shader_type::fragment>> const& shaders, std::vector<std::string> const& attributes) : handle(0) {
     glAttachShader(handle, std::get<0>(shaders));
     glAttachShader(handle, std::get<1>(shaders));
 
@@ -34,9 +35,13 @@ ogld::glsl_program::glsl_program(std::tuple<shader<shader_type::vertex> const&, 
     }
 }
 
-ogld::glsl_program::glsl_program(ogld::glsl_program&& other) noexcept { other.handle = 0; }
+ogld::glsl_program::glsl_program(glsl_program&& other) noexcept { other.handle = 0; }
 ogld::glsl_program::~glsl_program() { glDeleteProgram(handle); }
 
 ogld::glsl_program::operator GLuint() const noexcept { return handle; }
 
 void ogld::glsl_program::bind() noexcept { glUseProgram(handle); }
+
+std::tuple<ogld::shader<ogld::shader_type::vertex>, ogld::shader<ogld::shader_type::fragment>> operator+(ogld::shader<ogld::shader_type::vertex>&& vs, ogld::shader<ogld::shader_type::fragment>&& fs) {
+    return std::make_tuple(std::move(vs), std::move(fs));
+}
