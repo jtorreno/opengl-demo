@@ -4,3 +4,6 @@
 [submodule "deps/tdpi"]
 	path = deps/tdpi
 	url = https://github.com/skorezore/tdpi
+[submodule "deps/tinyobjloader"]
+	path = deps/tinyobjloader
+	url = https://github.com/syoyo/tinyobjloader

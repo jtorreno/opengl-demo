@@ -25,3 +25,5 @@ target_link_libraries(opengl-demo glfw ${GLFW_LIBRARIES})
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/deps/tdpi)
 target_link_libraries(opengl-demo tdpi)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/tinyobjloader)
