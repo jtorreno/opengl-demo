@@ -12,11 +12,11 @@ env:
     - NINJA_VERSION=1.7.2
 matrix:
   include:
-    - env: CXX=g++-6 CC=gcc-6
+    - env: CXX=g++-7 CC=gcc-7
       addons:
         apt:
           packages:
-            - g++-6
+            - g++-7
             - unzip
             - xorg-dev
             - libgl1-mesa-dev
