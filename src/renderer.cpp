@@ -3,10 +3,11 @@
 
 #include "camera.hpp"
 #include "mesh.hpp"
+#include "renderer.hpp"
 
 ogld::renderer::renderer() noexcept {
     glGenBuffers(1, &vertex_buffer_object);
-    glGenVertexArrays(&vertext_array_object);
+    glGenVertexArrays(1, &vertex_array_object);
 }
 
 ogld::renderer::~renderer() {
@@ -14,7 +15,8 @@ ogld::renderer::~renderer() {
     glDeleteVertexArrays(1, &vertex_array_object);
 }
 
-ogld::renderer::operator()(camera const& camera_) const noexcept {
+ogld::renderer::operator()(camera const& camera_, GLuint glsl_program) const noexcept {
+    camera_.bind(glsl_program);
     std::vector<float> vertex_data;
     for (auto& mesh : meshes) {
         vertex_data.insert(vertex_data.end(), mesh.vertex_data.begin(), mesh.vertex_data.end());
@@ -33,7 +35,6 @@ ogld::renderer::operator()(camera const& camera_) const noexcept {
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<void*>(3 * sizeof(float)));
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<void*>(6 * sizeof(float)));
 
-    camera_.bind();
     glDrawArrays(GL_TRIANGLES, 0, vertex_data.size() / 8);
 }
 

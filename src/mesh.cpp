@@ -13,7 +13,7 @@ ogld::obj_model::obj_model(std::string const& path) {
     std::vector<tinyobj::material_t> materials;
 
     std::string error_string;
-    if (!tinyobj::LoadObj(shapes, materials, error_string, (static_cast<std::stringstream&>(std::stringstream() << std::ifstream(path).rdbuf()).str()).c_str())) { 
+    if (!tinyobj::LoadObj(shapes, materials, error_string, path.c_str())) { 
         throw std::runtime_error(std::string("failed to load '") + path + std::string("'.\n\terror_string: ") + error_string); 
     }
 

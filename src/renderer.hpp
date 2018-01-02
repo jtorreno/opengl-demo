@@ -12,7 +12,7 @@ namespace ogld {
         renderer() noexcept;
         ~renderer();
 
-        operator()(camera const& camera_) const noexcept;
+        operator()(camera const& camera_, GLuint glsl_program) const noexcept;
 
         std::vector<mesh> meshes;
     private:

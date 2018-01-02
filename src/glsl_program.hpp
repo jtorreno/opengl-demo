@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <tuple>
 #include <vector>
 
 #include <tdpi/tdpi.h>
@@ -11,7 +10,7 @@
 namespace ogld {
     class glsl_program {
     public:
-        glsl_program(std::tuple<shader<shader_type::vertex>, shader<shader_type::fragment>> const& shaders, std::vector<std::string> const& attributes);
+        glsl_program(shader<shader_type::vertex> const& vs, shader<shader_type::fragment> const& fs, std::vector<std::string> const& attributes);
         glsl_program(glsl_program&& other) noexcept;
 
         ~glsl_program();
@@ -22,6 +21,4 @@ namespace ogld {
     private:
         GLuint handle;
     };
-
-    std::tuple<shader<shader_type::vertex>, shader<shader_type::fragment>> operator+(shader<shader_type::vertex> vs, shader<shader_type::fragment> fs);
 }

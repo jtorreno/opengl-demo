@@ -9,16 +9,16 @@
 #include "shader.hpp"
 #include "glsl_program.hpp"
 
-ogld::glsl_program::glsl_program(std::tuple<shader<shader_type::vertex>, shader<shader_type::fragment>> const& shaders, std::vector<std::string> const& attributes) : handle(0) {
-    glAttachShader(handle, std::get<0>(shaders));
-    glAttachShader(handle, std::get<1>(shaders));
+ogld::glsl_program::glsl_program(shader<shader_type::vertex> const& vs, shader<shader_type::fragment> const& fs, std::vector<std::string> const& attributes) : handle(glCreateProgram()) {
+    glAttachShader(handle, vs);
+    glAttachShader(handle, fs);
 
     for (auto const& attribute : attributes) { glBindAttribLocation(handle, &attribute - &attributes.front(), attribute.c_str()); }
 
     glLinkProgram(handle);
 
-    glDetachShader(handle, std::get<0>(shaders));
-    glDetachShader(handle, std::get<1>(shaders));
+    glDetachShader(handle, vs);
+    glDetachShader(handle, fs);
 
     GLint link_status = GL_FALSE;
     glGetProgramiv(handle, GL_LINK_STATUS, &link_status);
@@ -41,7 +41,3 @@ ogld::glsl_program::~glsl_program() { glDeleteProgram(handle); }
 ogld::glsl_program::operator GLuint() const noexcept { return handle; }
 
 void ogld::glsl_program::bind() noexcept { glUseProgram(handle); }
-
-std::tuple<ogld::shader<ogld::shader_type::vertex>, ogld::shader<ogld::shader_type::fragment>> operator+(ogld::shader<ogld::shader_type::vertex>&& vs, ogld::shader<ogld::shader_type::fragment>&& fs) {
-    return std::make_tuple(std::move(vs), std::move(fs));
-}
