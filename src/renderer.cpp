@@ -34,6 +34,6 @@ ogld::renderer::operator()(camera const& camera_) const noexcept {
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<void*>(6 * sizeof(float)));
 
     camera_.bind();
-    glDrawArrays(GL_TRIANGLES, 0, vertex_data.size() / 6);
+    glDrawArrays(GL_TRIANGLES, 0, vertex_data.size() / 8);
 }
 

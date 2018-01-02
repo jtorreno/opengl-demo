@@ -26,6 +26,9 @@ ogld::obj_model::obj_model(std::string const& path) {
             vertex_data.push_back(shape.mesh.normals.at(index * 3));
             vertex_data.push_back(shape.mesh.normals.at(index * 3 + 1));
             vertex_data.push_back(shape.mesh.normals.at(index * 3 + 2));
+
+            vertex_data.push_back(shape.mesh.texcoords.at(index * 2));
+            vertex_data.push_back(shape.mesh.texcoords.at(index * 2 + 1));
         }
     }
 }
