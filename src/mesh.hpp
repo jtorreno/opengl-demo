@@ -7,7 +7,6 @@ namespace ogld {
     class mesh {
     public:
         virtual ~mesh() = 0;
-    protected:
         std::vector<float> vertex_data;
     };
 
