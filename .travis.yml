@@ -16,7 +16,7 @@ matrix:
       addons:
         apt:
           packages:
-            - g++-7
+            - gcc-7
             - unzip
             - xorg-dev
             - libgl1-mesa-dev
