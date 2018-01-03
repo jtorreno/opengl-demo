@@ -8,6 +8,9 @@
 ogld::renderer::renderer() noexcept {
     glGenBuffers(1, &vertex_buffer_object);
     glGenVertexArrays(1, &vertex_array_object);
+
+    glEnable(GL_DEPTH_TEST);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
 
 ogld::renderer::~renderer() {
@@ -15,8 +18,9 @@ ogld::renderer::~renderer() {
     glDeleteVertexArrays(1, &vertex_array_object);
 }
 
-ogld::renderer::operator()(camera const& camera_, GLuint glsl_program) const noexcept {
-    camera_.bind(glsl_program);
+void ogld::renderer::operator()(camera const& camera_) const noexcept {
+    camera_.bind();
+    
     std::vector<float> vertex_data;
     for (auto& mesh : meshes) {
         vertex_data.insert(vertex_data.end(), mesh.vertex_data.begin(), mesh.vertex_data.end());

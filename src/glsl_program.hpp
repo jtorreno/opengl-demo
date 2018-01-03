@@ -5,6 +5,7 @@
 
 #include <tdpi/tdpi.h>
 
+#include "camera.hpp"
 #include "shader.hpp"
 
 namespace ogld {
@@ -19,6 +20,9 @@ namespace ogld {
 
         void bind() noexcept;
     private:
+        friend class camera;
+        static glsl_program* current_instance;
+
         GLuint handle;
     };
 }

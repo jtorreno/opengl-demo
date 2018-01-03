@@ -33,18 +33,18 @@ auto main() -> int {
                                                                "    color = vec4(0.0, 1.0, 0.0, 0.5);"
                                                                "}");
 
-    ogld::glsl_program glsl_program(vertex_shader, fragment_shader, std::vector<std::string>{"position", "normal", "texcoord"});
+    ogld::glsl_program glsl_program(vertex_shader, fragment_shader, {"position", "normal", "texcoord"});
     glsl_program.bind();
 
-    ogld::camera camera({5, 5, 5}, {0, 0, 0}, 100, 640/480.0f);
+    ogld::camera camera({0, 0, 3}, {0, 0, 0}, 90, 640/480.0f);
 
-    ogld::obj_model obj_model("res/cube.obj");
+    ogld::obj_model obj_model("../opengl-demo/res/cube.obj");
     
     ogld::renderer renderer;
     renderer.meshes.push_back(obj_model);
 
     while (true) {
-        renderer(camera, glsl_program);
+        renderer(camera);
         window.refresh();
     }
 }

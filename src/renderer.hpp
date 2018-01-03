@@ -3,16 +3,17 @@
 #include <vector>
 #include <tdpi/tdpi.h>
 
-#include "camera.hpp"
 #include "mesh.hpp"
 
 namespace ogld {
+    class camera;
+
     class renderer {
     public:
         renderer() noexcept;
         ~renderer();
 
-        operator()(camera const& camera_, GLuint glsl_program) const noexcept;
+        void operator()(camera const& camera_) const noexcept;
 
         std::vector<mesh> meshes;
     private:

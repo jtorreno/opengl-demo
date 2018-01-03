@@ -9,6 +9,8 @@
 #include "shader.hpp"
 #include "glsl_program.hpp"
 
+ogld::glsl_program* ogld::glsl_program::current_instance = nullptr;
+
 ogld::glsl_program::glsl_program(shader<shader_type::vertex> const& vs, shader<shader_type::fragment> const& fs, std::vector<std::string> const& attributes) : handle(glCreateProgram()) {
     glAttachShader(handle, vs);
     glAttachShader(handle, fs);
@@ -40,4 +42,7 @@ ogld::glsl_program::~glsl_program() { glDeleteProgram(handle); }
 
 ogld::glsl_program::operator GLuint() const noexcept { return handle; }
 
-void ogld::glsl_program::bind() noexcept { glUseProgram(handle); }
+void ogld::glsl_program::bind() noexcept {
+    current_instance = this;
+    glUseProgram(handle); 
+}
