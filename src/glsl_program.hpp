@@ -12,7 +12,11 @@ namespace ogld {
     class glsl_program {
     public:
         glsl_program(shader<shader_type::vertex> const& vs, shader<shader_type::fragment> const& fs, std::vector<std::string> const& attributes);
+
         glsl_program(glsl_program&& other) noexcept;
+
+        glsl_program(glsl_program const&) = delete;
+        glsl_program& operator=(glsl_program const&) = delete;
 
         ~glsl_program();
 
