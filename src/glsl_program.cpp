@@ -32,7 +32,7 @@ ogld::glsl_program::glsl_program(shader<shader_type::vertex> const& vs, shader<s
         std::string info_log;
         info_log.reserve(info_log_length);
 
-        glGetProgramInfoLog(handle, info_log_length, &info_log_length, info_log.data());
+        glGetProgramInfoLog(handle, info_log_length, &info_log_length, &info_log[0]);
         throw std::runtime_error(std::string("program linking failed.\n\tglGetProgramInfoLog(): ") + info_log);
     }
 }
@@ -44,5 +44,5 @@ ogld::glsl_program::operator GLuint() const noexcept { return handle; }
 
 void ogld::glsl_program::bind() noexcept {
     current_instance = this;
-    glUseProgram(handle); 
+    glUseProgram(handle);
 }

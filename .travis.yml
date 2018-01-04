@@ -12,18 +12,49 @@ env:
     - NINJA_VERSION=1.7.2
 matrix:
   include:
-    - env: CXX=g++-7 CC=gcc-7
+    - env: CXX=g++-5 CC=gcc-5
       addons:
         apt:
           packages:
-            - gcc-7
+            - g++-5
             - unzip
             - xorg-dev
             - libgl1-mesa-dev
           sources: &sources
-            - r-packages-precise
+            - r-packages-trusty
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-5.0
+            - llvm-toolchain-trusty-3.9
+            - llvm-toolchain-trusty-4.0
+            - llvm-toolchain-trusty-5.0
+    - env: CXX=g++-6 CC=gcc-6
+      addons:
+        apt:
+          packages:
+            - g++-6
+            - unzip
+            - xorg-dev
+            - libgl1-mesa-dev
+          sources: *sources
+    - env: CXX=clang++-3.9 CC=clang-3.9
+      addons:
+        apt:
+          packages:
+            - clang-3.9
+            - libc++-dev
+            - unzip
+            - xorg-dev
+            - libgl1-mesa-dev
+          sources: *sources
+    - env: CXX=clang++-4.0 CC=clang-4.0
+      addons:
+        apt:
+          packages:
+            - clang-4.0
+            - libc++-dev
+            - unzip
+            - xorg-dev
+            - libgl1-mesa-dev
+          sources: *sources
     - env: CXX=clang++-5.0 CC=clang-5.0
       addons:
         apt:
@@ -43,10 +74,11 @@ install:
   - ./"cmake-$CMAKE_VERSION_FULL-Linux-x86_64.sh" --prefix="$HOME" --exclude-subdir --skip-license
   -
   - if [[ ! -f "ninja-$NINJA_VERSION.zip" ]]; then
-      curl -SLO "https://github.com/ninja-build/ninja/releases/download/v$NINJA_VERSION/ninja-linux.zip";
-      mv "ninja-linux.zip" "ninja-$NINJA_VERSION.zip";
+      curl -SL "https://github.com/ninja-build/ninja/releases/download/v$NINJA_VERSION/ninja-linux.zip" -o "ninja-$NINJA_VERSION.zip";
     fi
-  - unzip "ninja-$NINJA_VERSION.zip" -d "$HOME/bin"; popd
+  - unzip "ninja-$NINJA_VERSION.zip" -d "$HOME/bin"
+  - popd
+
 script:
   - mkdir build && cd build
   - cmake -GNinja ..
