@@ -35,6 +35,8 @@ namespace ogld {
 
         static window* current_instance;
         const float aspect_ratio;
+
+        std::unique_ptr<glsl_program> glsl_program_;
     };
 }
 
