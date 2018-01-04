@@ -31,3 +31,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/tinyobjloader)
 target_link_libraries(opengl-demo tinyobjloader)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/glm)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/deps/stb)
