@@ -8,7 +8,7 @@
 
 #include "mesh.hpp"
 
-ogld::obj_model::obj_model(std::string const& path) {
+ogld::obj_mesh::obj_mesh(std::string const& path) {
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
 

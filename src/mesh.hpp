@@ -9,7 +9,7 @@ namespace ogld {
         std::vector<float> vertex_data;
     };
 
-    class obj_model : public mesh {
-    public: obj_model(std::string const& path);
+    class obj_mesh : public mesh {
+    public: obj_mesh(std::string const& path);
     };
 }

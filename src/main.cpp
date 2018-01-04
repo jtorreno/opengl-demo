@@ -38,10 +38,10 @@ auto main() -> int {
 
     ogld::camera camera({0, 0, 3}, {0, 0, 0}, 90);
 
-    ogld::obj_model obj_model("../opengl-demo/res/cube.obj");
+    ogld::obj_mesh obj_mesh("../opengl-demo/res/cube.obj");
     
     ogld::renderer renderer;
-    renderer.meshes.push_back(obj_model);
+    renderer.meshes.push_back(obj_mesh);
 
     while (true) {
         renderer(camera);
