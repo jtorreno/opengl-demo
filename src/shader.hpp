@@ -8,8 +8,6 @@
 
 #include <tdpi/tdpi.h>
 
-#include "window.hpp"
-
 namespace ogld {
     enum class shader_type : GLenum {
         vertex = GL_VERTEX_SHADER,

@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 
 #include "camera.hpp"
+#include "glsl_program.hpp"
 
 namespace ogld {
     class px {
