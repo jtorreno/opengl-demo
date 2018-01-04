@@ -8,6 +8,8 @@
 
 #include "window.hpp"
 
+ogld::window* ogld::window::current_instance = nullptr;
+
 ogld::px::px(unsigned int x_) noexcept : x(x_) {}
 
 std::array<unsigned int, 2> ogld::px::operator*(ogld::px rh) { return {x, rh.x}; }
@@ -15,7 +17,7 @@ ogld::px operator""_px(unsigned long long x) { return x; }
 
 void ogld::glfw_window_deleter::operator()(GLFWwindow* glfw_window) const noexcept { glfwDestroyWindow(glfw_window); }
 
-ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw_window(nullptr) {
+ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw_window(nullptr), aspect_ratio(size[0] / static_cast<float>(size[1])) {
     if (!glfwInit()) throw std::runtime_error("failed to initialize glfw.");
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -32,6 +34,8 @@ ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw
     glfwMakeContextCurrent(glfw_window.get());
 
     if (!tdpiLoadGL()) throw std::runtime_error("failed to load OpenGL.");
+
+    current_instance = this;
 }
 
 void ogld::window::make_current() noexcept { glfwMakeContextCurrent(glfw_window.get()); }

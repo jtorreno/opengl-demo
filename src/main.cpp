@@ -36,7 +36,7 @@ auto main() -> int {
     ogld::glsl_program glsl_program(vertex_shader, fragment_shader, {"position", "normal", "texcoord"});
     glsl_program.bind();
 
-    ogld::camera camera({0, 0, 3}, {0, 0, 0}, 90, 640/480.0f);
+    ogld::camera camera({0, 0, 3}, {0, 0, 0}, 90);
 
     ogld::obj_model obj_model("../opengl-demo/res/cube.obj");
     

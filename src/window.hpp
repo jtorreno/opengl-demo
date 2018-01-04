@@ -6,6 +6,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include "camera.hpp"
+
 namespace ogld {
     class px {
     public:
@@ -27,6 +29,11 @@ namespace ogld {
         void refresh() noexcept;
     private:
         std::unique_ptr<GLFWwindow, glfw_window_deleter> glfw_window;
+
+        friend class camera;
+
+        static window* current_instance;
+        const float aspect_ratio;
     };
 }
 

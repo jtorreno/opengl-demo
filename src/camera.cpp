@@ -7,8 +7,8 @@
 #include "camera.hpp"
 #include "glsl_program.hpp"
 
-ogld::camera::camera(glm::vec3 const& position, glm::vec3 const& target, float fov, float aspect_ratio) {
-    mvp = glm::perspective(glm::radians(fov), aspect_ratio, 0.1f, 1000.f) * glm::lookAt(position, target, glm::vec3(0, 1, 0)) * glm::mat4(1.0f);
+ogld::camera::camera(glm::vec3 const& position, glm::vec3 const& target, float fov) {
+    mvp = glm::perspective(glm::radians(fov), window::current_instance->aspect_ratio, 0.1f, 1000.f) * glm::lookAt(position, target, glm::vec3(0, 1, 0)) * glm::mat4(1.0f);
 }
 
 void ogld::camera::bind() const noexcept { 
