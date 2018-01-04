@@ -39,29 +39,8 @@ ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw
 
     current_instance = this;
 
-    shader<shader_type::vertex> vertex_shader("#version 330 core\n"
-                                              ""
-                                              "in vec3 position;"
-                                              "in vec3 normal;"
-                                                "in vec2 texcoord;"
-                                               ""
-                                               "uniform mat4 mvp;"
-                                               ""
-                                               "void main()"
-                                               "{"
-                                               "    vec4 v = vec4(position, 1);"
-                                               "    gl_Position = mvp * v;"
-                                               "}");
-
-    shader<shader_type::fragment> fragment_shader("#version 330 core\n"
-                                                  ""
-                                                   "out vec4 color;"
-                                                   ""
-                                                   "void main()"
-                                                   "{"
-                                                   "    color = vec4(0.0, 1.0, 0.0, 0.5);"
-                                                   "}");
-
+    shader<shader_type::vertex> vertex_shader("../opengl-demo/res/shaders/vertex_shader.glsl");
+    shader<shader_type::fragment> fragment_shader("../opengl-demo/res/shaders/fragment_shader.glsl");
 
     glsl_program_.reset();
     glsl_program_ = std::make_unique<glsl_program>(vertex_shader, fragment_shader, std::vector<std::string>({"position", "normal", "texcoord"}));

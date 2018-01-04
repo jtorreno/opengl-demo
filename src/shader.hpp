@@ -17,10 +17,12 @@ namespace ogld {
     template <shader_type S>
     class shader {
     public:
-        shader(std::string const& source) : handle(0) {
+        shader(std::string const& path) : handle(0) {
             handle = glCreateShader(static_cast<GLenum>(S));
 
+            std::string source = static_cast<std::stringstream&>(std::stringstream() << std::ifstream(path).rdbuf()).str();
             const char* source_c_str = source.c_str();
+
             glShaderSource(handle, 1, &source_c_str, nullptr);
 
             glCompileShader(handle);

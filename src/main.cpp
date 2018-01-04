@@ -10,7 +10,7 @@
 auto main() -> int {
     ogld::window window("opengl-demo", 640_px * 480_px);
 
-    ogld::obj_mesh obj_mesh("../opengl-demo/res/cube.obj");
+    ogld::obj_mesh obj_mesh("../opengl-demo/res/models/cube.obj");
     
     ogld::renderer renderer;
     renderer.meshes.push_back(obj_mesh);
