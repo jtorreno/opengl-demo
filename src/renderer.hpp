@@ -3,7 +3,7 @@
 #include <vector>
 #include <tdpi/tdpi.h>
 
-#include "mesh.hpp"
+#include "renderable.hpp"
 
 namespace ogld {
     class camera;
@@ -13,9 +13,9 @@ namespace ogld {
         renderer() noexcept;
         ~renderer();
 
-        void operator()(camera const& camera_) const noexcept;
+        void operator()(camera const& camera_) noexcept;
 
-        std::vector<mesh> meshes;
+        std::vector<renderable> render_list;
     private:
         GLuint vertex_buffer_object, vertex_array_object;
     };
