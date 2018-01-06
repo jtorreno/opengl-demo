@@ -5,7 +5,7 @@
 namespace ogld {
     class texture {
     public:
-        texture(std::string const& image_path);
+        texture(std::string const& image_path="../opengl-demo/res/textures/default.png");
         ~texture();
 
         //texture(texture const&) = delete;
