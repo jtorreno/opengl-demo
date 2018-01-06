@@ -1,5 +1,7 @@
 #pragma once
 
+#include <initializer_list>
+
 #include "texture.hpp"
 
 namespace ogld {

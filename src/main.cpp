@@ -10,11 +10,9 @@
 
 auto main() -> int {
     ogld::window window("opengl-demo", 640_px * 480_px);
-
-    ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}};
     
     ogld::renderer renderer;
-    renderer.render_list.push_back(cube);
+    renderer.render_list.push_back({ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}});
 
     ogld::camera camera({2, 2, 2}, {0, 0, 0}, 90);
 
