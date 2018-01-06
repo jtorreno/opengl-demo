@@ -18,4 +18,4 @@ cmake -G"Unix Makefiles"
 make
 ```
 
-![cube](https://gist.githubusercontent.com/juliantorreno/853909109c0717a0245b8868d6d8efc1/raw/9e4bdbc999a58579ea9e850ef3822e180cc299c3/demo.png)
+![cube](https://gist.githubusercontent.com/juliantorreno/853909109c0717a0245b8868d6d8efc1/raw/bb31a5f21c48019039524a2a2fd7c19e8718530e/demo.png)
