@@ -1,5 +1,6 @@
 #pragma once
 
+#include <tdpi/tdpi.h>
 #include <string>
 
 namespace ogld {
@@ -13,7 +14,7 @@ namespace ogld {
 
         texture(texture&& other) noexcept;
 
-        void bind() noexcept;
+        void bind() const noexcept;
     private:
         GLuint handle;
     };

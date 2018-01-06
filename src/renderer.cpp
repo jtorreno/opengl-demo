@@ -1,4 +1,6 @@
+#include <functional>
 #include <vector>
+
 #include <tdpi/tdpi.h>
 
 #include "camera.hpp"
@@ -27,9 +29,9 @@ void ogld::renderer::operator()(camera const& camera_) noexcept {
     glEnableVertexAttribArray(1);
     glEnableVertexAttribArray(2);
 
-    for (auto& renderable : render_list) {
+    for (auto const& renderable : render_list) {
         std::vector<float> vertex_data;
-        vertex_data.insert(vertex_data.end(), renderable.mesh_.vertex_data.begin(), renderable.mesh_.vertex_data.end());
+        vertex_data.insert(vertex_data.end(), renderable.get().mesh_.vertex_data.begin(), renderable.get().mesh_.vertex_data.end());
 
         glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object);
         glBufferData(GL_ARRAY_BUFFER, vertex_data.size() * sizeof(float), vertex_data.data(), GL_STATIC_DRAW);
@@ -38,7 +40,7 @@ void ogld::renderer::operator()(camera const& camera_) noexcept {
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<void*>(3 * sizeof(float)));
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<void*>(6 * sizeof(float)));
 
-        renderable.material_.texture_.bind();
+        renderable.get().material_.texture_.bind();
 
         glDrawArrays(GL_TRIANGLES, 0, vertex_data.size() / 8);
     }

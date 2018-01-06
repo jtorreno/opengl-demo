@@ -30,4 +30,4 @@ ogld::texture::texture(std::string const& image_path) {
 ogld::texture::~texture() { glDeleteTextures(1, &handle); }
 ogld::texture::texture(texture&& other) noexcept : handle(other.handle) { other.handle = 0; }
 
-void ogld::texture::bind() noexcept { glBindTexture(GL_TEXTURE_2D, handle); }
+void ogld::texture::bind() const noexcept { glBindTexture(GL_TEXTURE_2D, handle); }
