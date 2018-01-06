@@ -21,7 +21,12 @@ matrix:
             - unzip
             - xorg-dev
             - libgl1-mesa-dev
-          sources: *sources
+          sources: &sources
+            - r-packages-trusty
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-3.9
+            - llvm-toolchain-trusty-4.0
+            - llvm-toolchain-trusty-5.0
     - env: CXX=clang++-4.0 CC=clang-4.0
       addons:
         apt:
