@@ -6,11 +6,13 @@ in vec2 texcoord;
 
 out vec2 texcoord_fs;
 
-uniform mat4 mvp;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
 void main() {
     texcoord_fs = texcoord;
 
     vec4 v = vec4(position, 1);
-    gl_Position = mvp * v;
+    gl_Position = mat4(projection * view * model) * v;
 }

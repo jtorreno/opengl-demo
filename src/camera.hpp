@@ -13,6 +13,7 @@ namespace ogld {
         friend class renderer;
         void bind() const noexcept;
 
-        glm::mat4 mvp;
+        glm::mat4 view;
+        glm::mat4 projection;
     };
 }

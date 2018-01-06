@@ -1,6 +1,7 @@
 #pragma once
 
 #include <functional>
+#include <glm/glm.hpp>
 
 #include "mesh.hpp"
 #include "material.hpp"
@@ -11,6 +12,8 @@ namespace ogld {
 
         mesh mesh_;
         material material_;
+
+        glm::vec3 location;
     };
 
     struct static_object : public renderable {};

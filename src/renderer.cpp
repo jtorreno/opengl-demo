@@ -3,7 +3,12 @@
 
 #include <tdpi/tdpi.h>
 
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/glm.hpp>
+
 #include "camera.hpp"
+#include "glsl_program.hpp"
 #include "renderable.hpp"
 #include "renderer.hpp"
 
@@ -41,6 +46,7 @@ void ogld::renderer::operator()(camera const& camera_) noexcept {
         glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 32, reinterpret_cast<void*>(6 * sizeof(float)));
 
         renderable.get().material_.texture_.bind();
+        glUniformMatrix4fv(glGetUniformLocation(*(glsl_program::current_instance), "model"), 1, GL_FALSE, glm::value_ptr(glm::translate(glm::mat4(1.f), renderable.get().location))); 
 
         glDrawArrays(GL_TRIANGLES, 0, vertex_data.size() / 8);
     }
