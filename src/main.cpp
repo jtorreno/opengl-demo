@@ -14,8 +14,8 @@ auto main() -> int {
     
     ogld::renderer renderer;
 
-    ogld::static_object cube({ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}});
-    ogld::static_object suzanne({ogld::obj_mesh("../opengl-demo/res/models/suzanne.obj"), {ogld::texture("../opengl-demo/res/textures/white.png")}, {0, 3, 0}});
+    ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
+    ogld::static_object suzanne{ogld::obj_mesh("../opengl-demo/res/models/suzanne.obj"), {ogld::texture("../opengl-demo/res/textures/white.png")}, {0, 3, 0}};
     
     renderer.render_list.push_back(cube);
     renderer.render_list.push_back(suzanne);
