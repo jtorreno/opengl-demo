@@ -29,6 +29,7 @@ ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    glfwWindowHint(GLFW_SAMPLES, 4);
 
     glfw_window.reset(glfwCreateWindow(size[0], size[1], title.c_str(), nullptr, nullptr));
     if (!glfw_window.get()) throw std::runtime_error("failed to create window.");
