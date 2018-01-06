@@ -28,6 +28,8 @@ namespace ogld {
 
         void make_current() noexcept;
         void refresh() noexcept;
+
+        operator GLFWwindow*() const noexcept;
     private:
         std::unique_ptr<GLFWwindow, glfw_window_deleter> glfw_window;
 

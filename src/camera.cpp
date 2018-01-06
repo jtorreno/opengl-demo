@@ -8,8 +8,12 @@
 #include "glsl_program.hpp"
 #include "window.hpp"
 
-ogld::camera::camera(glm::vec3 const& position, glm::vec3 const& target, float fov) {
-    view = glm::lookAt(position, target, glm::vec3(0, 1, 0));
+ogld::camera::camera(glm::vec3 const& position, glm::vec3 const& target, float fov, glm::vec3 up) {
+    update(position, target, fov, up);
+}
+
+void ogld::camera::update(glm::vec3 const& position, glm::vec3 const& target, float fov, glm::vec3 up) {
+    view = glm::lookAt(position, target, up);
     projection = glm::perspective(glm::radians(fov), window::current_instance->aspect_ratio, 0.1f, 1000.f);
 }
 
