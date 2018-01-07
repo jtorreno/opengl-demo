@@ -16,7 +16,7 @@ ogld::renderer::renderer() noexcept {
     glGenBuffers(1, &vertex_buffer_object);
     glGenVertexArrays(1, &vertex_array_object);
 
-    glClearColor(0.0, 1.0, 0.5, 1.0);
+    glClearColor(1.0, 0.6, 0.75, 1.0);
     glEnable(GL_DEPTH_TEST);
 }
 

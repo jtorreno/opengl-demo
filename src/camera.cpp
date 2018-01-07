@@ -19,5 +19,5 @@ void ogld::camera::update(glm::vec3 const& position, glm::vec3 const& target, fl
 
 void ogld::camera::bind() const noexcept { 
     glUniformMatrix4fv(glGetUniformLocation(*(glsl_program::current_instance), "view"), 1, GL_FALSE, glm::value_ptr(view)); 
-    glUniformMatrix4fv(glGetUniformLocation(*(glsl_program::current_instance), "projection"), 1, GL_FALSE, glm::value_ptr(projection)); 
+    glUniformMatrix4fv(glGetUniformLocation(*(glsl_program::current_instance), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
