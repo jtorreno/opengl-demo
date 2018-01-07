@@ -15,21 +15,42 @@
 
 #include <GLFW/glfw3.h>
 
-std::array<double, 2> mouse_position(GLFWwindow* window) {
+struct point {
+    double x;
+    double y;
+};
+
+point operator-(const point& lhs, const point& rhs) {
+    return {
+        lhs.x - rhs.x,
+        lhs.y - rhs.y,
+    };
+}
+
+point mouse_position(GLFWwindow* window) {
     double x, y;
     glfwGetCursorPos(window, &x, &y);
 
     return {x, y};
 }
 
+point mouse_delta(GLFWwindow* window) {
+    static point last_pos = mouse_position(window);
+    point pos = mouse_position(window);
+
+    point delta = last_pos - pos;
+    last_pos = pos;
+    return delta;
+}
+
 auto main() -> int {
     ogld::window window("opengl-demo", 640_px * 480_px);
-    
+
     ogld::renderer renderer;
 
     ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
     ogld::static_object suzanne{ogld::obj_mesh("../opengl-demo/res/models/suzanne.obj"), {ogld::texture("../opengl-demo/res/textures/white.png")}, {0, 3, 0}};
-    
+
     renderer.render_list.push_back(cube);
     renderer.render_list.push_back(suzanne);
 
@@ -41,16 +62,16 @@ auto main() -> int {
 
     while (true) {
         double start = glfwGetTime();
-        glfwSetCursorPos(window, 640 / 2, 480 / 2);
 
         renderer(camera);
         window.refresh();
 
-        float const elapsed_time = glfwGetTime() - start;
-        auto const mouse_pos = mouse_position(window);
+        float elapsed_time = glfwGetTime() - start;
+        auto delta = mouse_delta(window);
 
-        horizontal_angle += 0.1 * elapsed_time * (640 / 2.0 - mouse_pos.at(0));
-        vertical_angle += 0.1 * elapsed_time * (480 / 2.0 - mouse_pos.at(1));
+        float mouse_speed = 0.005;
+        horizontal_angle += mouse_speed * delta.x;
+        vertical_angle   += mouse_speed * delta.y;
 
         glm::vec3 direction{std::cos(vertical_angle) * std::sin(horizontal_angle), std::sin(vertical_angle), std::cos(vertical_angle) * std::cos(horizontal_angle)};
         glm::vec3 right{std::sin(horizontal_angle - 3.14159 / 2.0), 0, std::cos(horizontal_angle - 3.14159 / 2.0)};

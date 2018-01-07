@@ -35,7 +35,7 @@ ogld::window::window(std::string title, std::array<unsigned int, 2> size) : glfw
     if (!glfw_window.get()) throw std::runtime_error("failed to create window.");
 
     glfwMakeContextCurrent(glfw_window.get());
-    glfwSetInputMode(glfw_window.get(), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    glfwSetInputMode(glfw_window.get(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     if (!tdpiLoadGL()) throw std::runtime_error("failed to load OpenGL.");
 
@@ -54,7 +54,6 @@ void ogld::window::make_current() noexcept { glfwMakeContextCurrent(glfw_window.
 
 void ogld::window::refresh() noexcept {
     glfwPollEvents();
-    glfwSwapInterval(1);
     glfwSwapBuffers(glfw_window.get());
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
