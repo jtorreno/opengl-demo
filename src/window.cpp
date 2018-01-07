@@ -54,6 +54,7 @@ void ogld::window::make_current() noexcept { glfwMakeContextCurrent(glfw_window.
 
 void ogld::window::refresh() noexcept {
     glfwPollEvents();
+    glfwSwapInterval(1);
     glfwSwapBuffers(glfw_window.get());
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

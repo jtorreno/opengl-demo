@@ -49,8 +49,8 @@ auto main() -> int {
         float const elapsed_time = glfwGetTime() - start;
         auto const mouse_pos = mouse_position(window);
 
-        horizontal_angle += 10 * elapsed_time * (640 / 2.0 - mouse_pos.at(0));
-        vertical_angle += 10 * elapsed_time * (480 / 2.0 - mouse_pos.at(1));
+        horizontal_angle += 0.1 * elapsed_time * (640 / 2.0 - mouse_pos.at(0));
+        vertical_angle += 0.1 * elapsed_time * (480 / 2.0 - mouse_pos.at(1));
 
         glm::vec3 direction{std::cos(vertical_angle) * std::sin(horizontal_angle), std::sin(vertical_angle), std::cos(vertical_angle) * std::cos(horizontal_angle)};
         glm::vec3 right{std::sin(horizontal_angle - 3.14159 / 2.0), 0, std::cos(horizontal_angle - 3.14159 / 2.0)};
