@@ -46,8 +46,8 @@ auto main() -> int {
         renderer(camera);
         window.refresh();
 
-        float elapsed_time = glfwGetTime() - start;
-        auto mouse_pos = mouse_position(window);
+        float const elapsed_time = glfwGetTime() - start;
+        auto const mouse_pos = mouse_position(window);
 
         horizontal_angle += 10 * elapsed_time * (640 / 2.0 - mouse_pos.at(0));
         vertical_angle += 10 * elapsed_time * (480 / 2.0 - mouse_pos.at(1));
