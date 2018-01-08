@@ -7,6 +7,7 @@ namespace ogld {
     class mesh {
     public:
         std::vector<float> vertex_data;
+        std::vector<unsigned int> indices;
     };
 
     class obj_mesh : public mesh {

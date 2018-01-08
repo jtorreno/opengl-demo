@@ -19,6 +19,6 @@ namespace ogld {
 
         std::vector<std::reference_wrapper<renderable const>> render_list;
     private:
-        GLuint vertex_buffer_object, vertex_array_object;
+        GLuint vertex_buffer_object, element_buffer_object, vertex_array_object;
     };
 }
