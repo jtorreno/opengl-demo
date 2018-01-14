@@ -8,10 +8,7 @@
 
 #include <GLFW/glfw3.h>
 
-struct point {
-    double x;
-    double y;
-};
+struct point { double x, y; };
 
 point operator-(const point& lhs, const point& rhs) {
     return {
@@ -33,6 +30,7 @@ point mouse_delta(GLFWwindow* window) {
 
     point delta = last_pos - pos;
     last_pos = pos;
+
     return delta;
 }
 
@@ -52,7 +50,7 @@ auto main() -> int {
     float horizontal_angle = 3.14159;
     float vertical_angle = 0;
 
-    while (true) {
+    while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS) {
         double start = glfwGetTime();
 
         renderer(camera);
@@ -61,9 +59,8 @@ auto main() -> int {
         float elapsed_time = glfwGetTime() - start;
         auto delta = mouse_delta(window);
 
-        float mouse_speed = 0.005;
-        horizontal_angle += mouse_speed * delta.x;
-        vertical_angle   += mouse_speed * delta.y;
+        horizontal_angle += 0.005 * delta.x;
+        vertical_angle   += 0.005 * delta.y;
 
         glm::vec3 direction{std::cos(vertical_angle) * std::sin(horizontal_angle), std::sin(vertical_angle), std::cos(vertical_angle) * std::cos(horizontal_angle)};
         glm::vec3 right{std::sin(horizontal_angle - 3.14159 / 2.0), 0, std::cos(horizontal_angle - 3.14159 / 2.0)};
@@ -73,8 +70,6 @@ auto main() -> int {
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) { position -= direction * elapsed_time * 10.0f; }
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) { position += right * elapsed_time * 10.0f; }
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) { position -= right * elapsed_time * 10.0f; }
-
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) break;
 
         camera.update(position, position + direction, 60, up);
     }
