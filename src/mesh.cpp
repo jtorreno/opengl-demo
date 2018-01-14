@@ -27,18 +27,14 @@ ogld::obj_mesh::obj_mesh(std::string const& path) {
 
     for (auto const& shape : shapes) {
         for (auto const& index : shape.mesh.indices) {
-            float vx = shape.mesh.positions.at(index * 3);
-            float vy = shape.mesh.positions.at(index * 3 + 1);
-            float vz = shape.mesh.positions.at(index * 3 + 2);
-
-            float vnx = shape.mesh.normals.at(index * 3);
-            float vny = shape.mesh.normals.at(index * 3 + 1);
-            float vnz = shape.mesh.normals.at(index * 3 + 2);
-
-            float vtx = shape.mesh.texcoords.at(index * 2);
-            float vty = shape.mesh.texcoords.at(index * 2 + 1);
-
-            repeating_vertex_data.push_back({vx, vy, vz, vnx, vny, vnz, vtx, vty});
+            repeating_vertex_data.push_back({shape.mesh.positions.at(index * 3),
+                                             shape.mesh.positions.at(index * 3 + 1),
+                                             shape.mesh.positions.at(index * 3 + 2),
+                                             shape.mesh.normals.at(index * 3),
+                                             shape.mesh.normals.at(index * 3 + 1),
+                                             shape.mesh.normals.at(index * 3 + 2),
+                                             shape.mesh.texcoords.at(index * 2),
+                                             shape.mesh.texcoords.at(index * 2 + 1)});
         }
     }
 
