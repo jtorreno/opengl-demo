@@ -1,10 +1,3 @@
-#include <array>
-#include <chrono>
-#include <cmath>
-#include <functional>
-#include <iostream>
-#include <utility>
-
 #include "camera.hpp"
 #include "glsl_program.hpp"
 #include "renderer.hpp"
@@ -45,7 +38,6 @@ point mouse_delta(GLFWwindow* window) {
 
 auto main() -> int {
     ogld::window window("opengl-demo", 640_px * 480_px);
-
     ogld::renderer renderer;
 
     ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
