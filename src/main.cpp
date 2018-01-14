@@ -74,6 +74,8 @@ auto main() -> int {
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) { position += right * elapsed_time * 10.0f; }
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) { position -= right * elapsed_time * 10.0f; }
 
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) break;
+
         camera.update(position, position + direction, 60, up);
     }
 }
