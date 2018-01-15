@@ -10,11 +10,8 @@
 
 struct point { double x, y; };
 
-point operator-(const point& lhs, const point& rhs) {
-    return {
-        lhs.x - rhs.x,
-        lhs.y - rhs.y,
-    };
+point operator-(point const& lhs, point const& rhs) {
+    return { lhs.x - rhs.x, lhs.y - rhs.y };
 }
 
 point mouse_position(GLFWwindow* window) {
@@ -35,7 +32,7 @@ point mouse_delta(GLFWwindow* window) {
 }
 
 auto main() -> int {
-    ogld::window window("opengl-demo", 640_px * 480_px);
+    ogld::window window("opengl-demo", 1600_px * 900_px);
     ogld::renderer renderer;
 
     ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
