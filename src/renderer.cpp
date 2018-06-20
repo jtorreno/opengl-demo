@@ -56,4 +56,3 @@ void ogld::renderer::operator()(camera const& camera_) noexcept {
         glDrawElements(GL_TRIANGLES, renderable.get().mesh_.indices.size(), GL_UNSIGNED_INT, reinterpret_cast<void*>(0));
     }
 }
-
