@@ -15,6 +15,4 @@ namespace ogld {
 
         glm::vec3 location;
     };
-
-    struct static_object : public renderable {};
 }

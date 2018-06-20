@@ -1,8 +1,8 @@
 #include "camera.hpp"
 #include "glsl_program.hpp"
 #include "renderer.hpp"
-#include "renderable.hpp"
 #include "shader.hpp"
+#include "static_object.hpp"
 #include "texture.hpp"
 #include "window.hpp"
 
