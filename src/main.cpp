@@ -33,7 +33,7 @@ point mouse_delta(GLFWwindow* window) {
 
 auto main() -> int {
     ogld::window window("opengl-demo", 1600_px * 900_px);
-    ogld::renderer renderer;
+    ogld::renderer<ogld::static_object> renderer;
 
     ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
     ogld::static_object suzanne{ogld::obj_mesh("../opengl-demo/res/models/suzanne.obj"), {ogld::texture("../opengl-demo/res/textures/white.png")}, {0, 3, 0}};

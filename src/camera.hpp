@@ -3,7 +3,7 @@
 #include <tdpi/tdpi.h>
 #include <glm/glm.hpp>
 
-#include "renderer.hpp"
+template <typename T> class renderer;
 
 namespace ogld {
     class camera {
@@ -11,7 +11,7 @@ namespace ogld {
         camera(glm::vec3 const& position, glm::vec3 const& target, float fov, glm::vec3 up);
         void update(glm::vec3 const& position, glm::vec3 const& target, float fov, glm::vec3 up);
     private:
-        friend class renderer;
+        template <typename T> friend class renderer;
         void bind() const noexcept;
 
         glm::mat4 view;
