@@ -2,7 +2,7 @@
 #include "glsl_program.hpp"
 #include "renderer.hpp"
 #include "shader.hpp"
-#include "static_object.hpp"
+#include "model.hpp"
 #include "texture.hpp"
 #include "window.hpp"
 
@@ -33,10 +33,10 @@ point mouse_delta(GLFWwindow* window) {
 
 auto main() -> int {
     ogld::window window("opengl-demo", 1600_px * 900_px);
-    ogld::renderer<ogld::static_object> renderer;
+    ogld::renderer<ogld::model> renderer;
 
-    ogld::static_object cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
-    ogld::static_object suzanne{ogld::obj_mesh("../opengl-demo/res/models/suzanne.obj"), {ogld::texture("../opengl-demo/res/textures/white.png")}, {0, 3, 0}};
+    ogld::model cube{ogld::obj_mesh("../opengl-demo/res/models/cube.obj"), {ogld::texture()}, {0, 0, 0}};
+    ogld::model suzanne{ogld::obj_mesh("../opengl-demo/res/models/suzanne.obj"), {ogld::texture("../opengl-demo/res/textures/white.png")}, {0, 3, 0}};
 
     renderer.render_list.push_back(cube);
     renderer.render_list.push_back(suzanne);

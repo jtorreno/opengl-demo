@@ -13,11 +13,10 @@
 
 #include "camera.hpp"
 #include "glsl_program.hpp"
-#include "renderable.hpp"
-#include "static_object.hpp"
+#include "model.hpp"
 
 namespace ogld {
-    template <typename T>
+    template <typename T = model>
     class renderer {
     public:
         renderer() noexcept {
@@ -67,8 +66,6 @@ namespace ogld {
 
         std::vector<std::reference_wrapper<T const>> render_list;
     private:
-        static_assert(std::is_base_of<renderable, T>::value, "T does not derive from renderable.");
-
         GLuint vertex_buffer_object, element_buffer_object, vertex_array_object;
     };
 }
