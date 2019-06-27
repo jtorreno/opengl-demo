@@ -8,7 +8,7 @@ An exercise in futility gone a little too far.
 
 1) An OpenGL 3.3 capable graphics driver
 2) A feature-complete C++17 compiler
-3) [CMake](https://cmake.org/download/) version 3.1.0 at the minimum
+3) [CMake](https://cmake.org/download/) version 3.1.0 or above
 
 ## Installation
 
