@@ -63,10 +63,12 @@ auto main() -> int {
         glm::vec3 right{std::sin(horizontal_angle - 3.14159 / 2.0), 0, std::cos(horizontal_angle - 3.14159 / 2.0)};
         glm::vec3 up = glm::cross(right, direction);
 
-        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) { position += direction * elapsed_time * 10.0f; }
-        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) { position -= direction * elapsed_time * 10.0f; }
-        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) { position += right * elapsed_time * 10.0f; }
-        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) { position -= right * elapsed_time * 10.0f; }
+        auto const sensitivity = 5.f;
+
+        if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) { position += direction * elapsed_time * sensitivity; }
+        if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) { position -= direction * elapsed_time * sensitivity; }
+        if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) { position += right * elapsed_time * sensitivity; }
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) { position -= right * elapsed_time * sensitivity; }
 
         camera.update(position, position + direction, 60, up);
     }
